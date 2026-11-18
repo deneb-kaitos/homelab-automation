@@ -1,0 +1,30 @@
+namespace infrastructure.ddns;
+
+struct IPv4 {
+  bytes: [ubyte:4];
+}
+
+struct IPv6 {
+  bytes: [ubyte:16];
+}
+
+table IPv4Announcement {
+  address: IPv4;
+}
+
+table IPv6Announcement {
+  address: IPv6;
+}
+
+union IPAnnouncement {
+  IPv4Announcement,
+  IPv6Announcement
+}
+
+table IPMessage {
+  payload: IPAnnouncement;
+}
+
+root_type IPMessage;
+
+file_identifier "IP46";
